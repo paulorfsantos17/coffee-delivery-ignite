@@ -1,4 +1,4 @@
-export const defaultThemes = {
+export const defaultTheme = {
   white: '#FFFFFF',
 
   yellow: '#DBAC2C',
@@ -18,4 +18,15 @@ export const defaultThemes = {
   'base-input': '#EDEDED',
   'base-card': '#F3F2F2',
   background: '#FAFAFA',
+
+  'roboto-large': '20px',
+  'roboto-medium': '16px',
+  'roboto-small': '14px',
+  'roboto-xs': '12px',
+
+  'baloo-xl': '48px',
+  'baloo-large': '32px',
+  'baloo-medium': '24px',
+  'baloo-small': '20px',
+  'baloo-xs': '18px',
 }
