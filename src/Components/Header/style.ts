@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
-  width: 100vw;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10rem;
+  padding: 1.5rem 5rem;
 `
 
 export const MenuContainer = styled.nav`

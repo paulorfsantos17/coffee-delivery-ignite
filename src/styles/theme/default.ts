@@ -19,14 +19,14 @@ export const defaultTheme = {
   'base-card': '#F3F2F2',
   background: '#FAFAFA',
 
-  'roboto-large': '20px',
-  'roboto-medium': '16px',
-  'roboto-small': '14px',
-  'roboto-xs': '12px',
+  'roboto-large': '1.25rem',
+  'roboto-medium': '1rem',
+  'roboto-small': '0.875rem',
+  'roboto-xs': '0.75rem',
 
-  'baloo-xl': '48px',
-  'baloo-large': '32px',
-  'baloo-medium': '24px',
-  'baloo-small': '20px',
-  'baloo-xs': '18px',
+  'baloo-xl': '3rem',
+  'baloo-large': '2rem',
+  'baloo-medium': '1.5rem',
+  'baloo-small': '1.25rem',
+  'baloo-xs': '1.125rem',
 }

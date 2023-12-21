@@ -19,7 +19,7 @@ export const BannerContainer = styled.div`
   gap: 3.5rem;
   width: 100%;
   height: 544px;
-  padding: 5.75rem 10rem;
+  padding: 3rem 5rem;
   background-image: url(${background});
 
   h1 {
