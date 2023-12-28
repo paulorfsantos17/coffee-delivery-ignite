@@ -5,7 +5,7 @@ export const QuantityButtonContainer = styled.div`
   background-color: ${(props) => props.theme['base-button']};
   padding: 0.5rem;
   align-items: center;
-  border: 6px;
+  border-radius: 6px;
 
   input {
     width: 1.25rem;
