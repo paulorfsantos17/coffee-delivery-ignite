@@ -7,6 +7,9 @@ export const CartItemContainer = styled.div`
     height: 20%;
     width: 20%;
   }
+
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid ${({ theme }) => theme['base-button']};
 `
 
 export const DescriptionItem = styled.div`
