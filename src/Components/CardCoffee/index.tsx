@@ -12,7 +12,7 @@ import { QuatityButton } from '../QuantityButton'
 import { MouseEvent, useContext, useState } from 'react'
 import { CartContext } from '../../contexts/CartProvider'
 
-interface ICoffee {
+export interface ICoffee {
   id: string
   title: string
   description: string
@@ -29,10 +29,10 @@ export function CardCoffee({ coffee }: ICardCoffeeProps) {
   const { addItem } = useContext(CartContext)
   const [quantity, setQuantity] = useState<number>(0)
 
-  const addQuantity = () => {
+  const incleaseQuantity = () => {
     setQuantity((prev) => prev + 1)
   }
-  const increaseQuantity = () => {
+  const decreaseQuantity = () => {
     setQuantity((prev) => prev - 1)
   }
 
@@ -57,12 +57,12 @@ export function CardCoffee({ coffee }: ICardCoffeeProps) {
       <TitleCard>{coffee.description}</TitleCard>
       <FooterCard>
         <Price>
-          R$ <span>9,90</span>
+          R$ <span>{coffee.price.toFixed(2)}</span>
         </Price>
         <FormContainer>
           <QuatityButton
-            addQuantity={addQuantity}
-            increaseQuantity={increaseQuantity}
+            increaseQuantity={incleaseQuantity}
+            decreaseQuantity={decreaseQuantity}
             quantity={quantity}
           />
           <ButtonAdd onClick={handleAddItem}>

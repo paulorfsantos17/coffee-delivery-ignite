@@ -31,6 +31,34 @@ export function cartReducer(state: ICardState, action: Actions) {
         }
       })
     }
+    case actionsTypes.INCLEASE_QUANTITY_ITEM: {
+      return produce(state, (draft) => {
+        const itemAlreadyAdded = draft.cart.find(
+          (item) => item.id === action.payload.id,
+        )
+        if (itemAlreadyAdded) {
+          itemAlreadyAdded.quantity = itemAlreadyAdded?.quantity + 1
+        }
+      })
+    }
+    case actionsTypes.DECREASE_QUANTITY_ITEM: {
+      return produce(state, (draft) => {
+        const itemAlreadyAdded = draft.cart.find(
+          (item) => item.id === action.payload.id,
+        )
+        if (itemAlreadyAdded) {
+          itemAlreadyAdded.quantity = itemAlreadyAdded?.quantity - 1
+        }
+      })
+    }
+    case actionsTypes.REMOVE_QUANTITY_ITEM: {
+      return produce(state, (draft) => {
+        const listWithRemoveItem = draft.cart.filter(
+          (item) => item.id !== action.payload.id,
+        )
+        draft.cart = listWithRemoveItem
+      })
+    }
 
     default:
       return state

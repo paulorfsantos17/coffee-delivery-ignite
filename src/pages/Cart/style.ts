@@ -108,6 +108,10 @@ export const CardItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  p {
+    text-align: center;
+  }
 `
 
 interface IDescriptionPriceProps {
@@ -157,7 +161,7 @@ export const CheckoutButton = styled.button`
   font-size: ${({ theme }) => theme['roboto-medium']};
   font-style: normal;
   font-weight: 700;
-  line-height: 160 %; /* 22.4px */
+  line-height: 160%; /* 22.4px */
   text-transform: uppercase;
   transition: 0.3s;
 

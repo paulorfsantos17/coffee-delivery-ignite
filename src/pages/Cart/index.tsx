@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+
 import {
   CardItemContainer,
   CartAside,
@@ -24,8 +25,26 @@ import {
 import { InputText } from '../../Components/InputText'
 import { RadioInput } from '../../Components/RadioInput'
 import CartItem from '../../Components/CartItem'
+import { CartContext } from '../../contexts/CartProvider'
+import { useContext } from 'react'
+import { coffees } from '../../../data.json'
 
 export function Cart() {
+  const { cart } = useContext(CartContext)
+
+  const CoffeesInCart = cart.map((cartItem) => {
+    const coffeeInfo = coffees.find((coffee) => cartItem.id === coffee.id)
+
+    if (!coffeeInfo) {
+      throw new Error('Invalid coffee.')
+    }
+
+    return {
+      ...coffeeInfo,
+      quantity: cartItem.quantity,
+    }
+  })
+
   return (
     <ContainerCart>
       <ContainerLocale>
@@ -86,8 +105,13 @@ export function Cart() {
         <TitleCard>Cafés selecionados</TitleCard>
         <ContentCard>
           <CardItemContainer>
-            <CartItem />
-            <CartItem />
+            {CoffeesInCart.length > 0 ? (
+              CoffeesInCart.map((itemCart) => (
+                <CartItem key={itemCart.id} cartItem={itemCart} />
+              ))
+            ) : (
+              <p>Não há itens no carrinho.</p>
+            )}
           </CardItemContainer>
           <DescriptionPriceContainer>
             <DescriptionPrice>

@@ -1,5 +1,4 @@
 import { QuatityButton } from '../QuantityButton'
-import { coffees } from '../../../data.json'
 import {
   CartItemContainer,
   DescriptionItem,
@@ -7,22 +6,56 @@ import {
   RemoveButton,
 } from './style'
 import { Trash } from 'phosphor-react'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartProvider'
+import { ICoffee } from '../CardCoffee'
 
-export default function CartItem() {
+interface ICoffeeCartItem extends ICoffee {
+  quantity: number
+}
+
+interface ICartItemProps {
+  cartItem: ICoffeeCartItem
+}
+
+export default function CartItem({ cartItem }: ICartItemProps) {
+  const { incleaseItemToCart, decreaseItemToCart, removeItemToCart } =
+    useContext(CartContext)
+  const { id, image, price, quantity, title } = cartItem
+
+  const increaseQuantity = () => {
+    incleaseItemToCart(id)
+  }
+  const decreaseQuantity = () => {
+    decreaseItemToCart(id)
+  }
+  const handleRemoveItem = () => {
+    removeItemToCart(id)
+  }
+
   return (
     <CartItemContainer>
-      <img src={coffees[0].image} alt="img" />
+      <img src={image} alt="img" />
       <DescriptionItem>
-        <span>{coffees[0].title}</span>
+        <span>{title}</span>
         <div>
-          <QuatityButton />
-          <RemoveButton>
+          <QuatityButton
+            quantity={quantity}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+          />
+          <RemoveButton onClick={handleRemoveItem}>
             <Trash />
             Remover
           </RemoveButton>
         </div>
       </DescriptionItem>
-      <Price>R$ 9,90</Price>
+      <Price>
+        {new Intl.NumberFormat('pr-br', {
+          currency: 'BRL',
+          style: 'currency',
+        }).format(quantity * price)}
+      </Price>
     </CartItemContainer>
   )
 }

@@ -2,22 +2,22 @@ import { Minus, Plus } from 'phosphor-react'
 import { QuantityButtonContainer } from './style'
 import { MouseEvent } from 'react'
 interface IQuatityButtonProps {
-  addQuantity: () => void
   increaseQuantity: () => void
+  decreaseQuantity: () => void
   quantity: number
 }
 export function QuatityButton({
-  addQuantity,
+  decreaseQuantity,
   increaseQuantity,
   quantity,
 }: IQuatityButtonProps) {
   const handleAddQuantity = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    addQuantity()
+    increaseQuantity()
   }
   const handleIncreaseQuantity = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    increaseQuantity()
+    decreaseQuantity()
   }
 
   return (
