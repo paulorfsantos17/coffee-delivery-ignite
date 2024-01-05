@@ -33,17 +33,24 @@ export function CardCoffee({ coffee }: ICardCoffeeProps) {
     setQuantity((prev) => prev + 1)
   }
   const decreaseQuantity = () => {
+    if (quantity === 0) {
+      return
+    }
     setQuantity((prev) => prev - 1)
   }
 
   const handleAddItem = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    if (quantity === 0) {
+      return
+    }
     addItem({
       id: coffee.id,
       quantity,
     })
     setQuantity(0)
   }
+  const isQuantityZero = quantity === 0
 
   return (
     <CardContainer>
@@ -65,7 +72,7 @@ export function CardCoffee({ coffee }: ICardCoffeeProps) {
             decreaseQuantity={decreaseQuantity}
             quantity={quantity}
           />
-          <ButtonAdd onClick={handleAddItem}>
+          <ButtonAdd onClick={handleAddItem} disabled={isQuantityZero}>
             <ShoppingCart size={22} weight="fill" />
           </ButtonAdd>
         </FormContainer>

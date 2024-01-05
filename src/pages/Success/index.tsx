@@ -10,8 +10,11 @@ import {
 } from './style'
 import SuccessImage from '../../assets/sucessImage.png'
 import { MapPin } from 'phosphor-react'
+import { useParams } from 'react-router-dom'
 
 export function Success() {
+  
+  const { orderId } = useParams()
   return (
     <SuccessContainer>
       <Header>

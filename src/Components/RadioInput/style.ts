@@ -1,6 +1,9 @@
 import styled from 'styled-components'
+interface RadioContainerProps {
+  error?: boolean
+}
 
-export const RadioContainer = styled.div`
+export const RadioContainer = styled.label<RadioContainerProps>`
   display: flex;
   gap: 0.75rem;
   align-items: center;
@@ -8,8 +11,9 @@ export const RadioContainer = styled.div`
   background-color: ${({ theme }) => theme['base-button']};
   padding: 1rem;
   border-radius: 6px;
-  border: 1px solid transparent;
+  border: 1px solid;
   transition: all 0.2s;
+  border-color: ${({ error }) => (error ? 'red' : 'transparent')};
 
   &:hover {
     background-color: ${({ theme }) => theme['base-hover']};

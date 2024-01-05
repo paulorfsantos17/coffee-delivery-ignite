@@ -2,10 +2,12 @@ import styled from 'styled-components'
 
 interface IInputContainer {
   gridArea: string | undefined
+  error: boolean
 }
 
 export const InputContainer = styled.div<IInputContainer>`
   display: flex;
+  flex-direction: column;
   width: 100%;
   grid-area: ${({ gridArea }) => gridArea};
 
@@ -17,17 +19,20 @@ export const InputContainer = styled.div<IInputContainer>`
     padding: 0.5rem;
     width: 100%;
     background-color: ${(props) => props.theme['base-input']};
-    border: 1px solid ${(props) => props.theme['base-button']};
+    border: 1px solid;
+
     border-radius: 6px;
 
     transition: 0.3s;
 
     &[data-state='focused'] {
-      border-color: ${({ theme }) => theme['yellow-dark']};
+      border-color: ${({ error, theme }) =>
+        error ? 'red' : theme['base-button']};
     }
 
     &[data-state='blurred'] {
-      border-color: ${({ theme }) => theme['base-button']};
+      border-color: ${({ error, theme }) =>
+        error ? 'red' : theme['base-button']};
     }
 
     span {
@@ -60,4 +65,11 @@ export const InputContainer = styled.div<IInputContainer>`
   input::placeholder {
     color: ${(props) => props.theme['base-label']};
   }
+`
+
+export const ErrorMessage = styled.p`
+  margin-top: 0.25rem;
+  font-size: 0.6rem;
+  color: red;
+  font-weight: 400;
 `

@@ -22,8 +22,13 @@ export const QuantityButtonContainer = styled.div`
     background-color: transparent;
     color: ${(props) => props.theme.purple};
     transition: 0.3s;
-  }
-  button:hover {
-    color: ${(props) => props.theme['purple-dark']};
+
+    &:hover {
+      color: ${(props) => props.theme['purple-dark']};
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 `

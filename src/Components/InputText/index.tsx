@@ -5,15 +5,24 @@ import {
   useState,
   FocusEvent,
 } from 'react'
-import { InputContainer } from './style'
+import { ErrorMessage, InputContainer } from './style'
+import { FieldError } from 'react-hook-form'
 
 type ITextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   optional?: boolean
   gridArea?: string
+  error?: FieldError
 }
 
 export const InputText = forwardRef(function TextInput(
-  { optional = false, onFocus, onBlur, gridArea, ...rest }: ITextInputProps,
+  {
+    optional = false,
+    error,
+    onFocus,
+    onBlur,
+    gridArea,
+    ...rest
+  }: ITextInputProps,
   ref: LegacyRef<HTMLInputElement>,
 ) {
   const [isFocused, setIsFocused] = useState(false)
@@ -26,8 +35,9 @@ export const InputText = forwardRef(function TextInput(
     setIsFocused(false)
     onBlur?.(event)
   }
+  const isError = !!error
   return (
-    <InputContainer gridArea={gridArea}>
+    <InputContainer gridArea={gridArea} error={isError}>
       <label data-state={isFocused ? 'focused' : 'blurred'}>
         <input
           type="text"
@@ -38,6 +48,7 @@ export const InputText = forwardRef(function TextInput(
         />
         {optional ? <span>Optional</span> : ''}
       </label>
+      {isError ? <ErrorMessage>{error.message}</ErrorMessage> : null}
     </InputContainer>
   )
 })

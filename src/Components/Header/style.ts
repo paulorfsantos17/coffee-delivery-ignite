@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -27,7 +28,7 @@ export const LinkLocale = styled.div`
   cursor: pointer;
   border-radius: 6px;
 `
-export const LinkCart = styled.div`
+export const LinkCart = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,4 +39,26 @@ export const LinkCart = styled.div`
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 6px;
+  text-decoration: none;
+`
+
+export const QuantityCart = styled.p`
+  width: 12px;
+  height: 12px;
+  z-index: 10;
+  position: relative;
+  right: 20px;
+  top: -4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font-style: normal;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  background-color: ${(props) => props.theme['yellow-dark']};
+  color: ${(props) => props.theme.white};
 `

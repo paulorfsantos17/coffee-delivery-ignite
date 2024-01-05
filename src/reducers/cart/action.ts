@@ -1,3 +1,5 @@
+import { NavigateFunction } from 'react-router-dom'
+import { IOrderInfo } from '../../contexts/CartProvider'
 import { ICartItem } from './reducer'
 
 export enum actionsTypes {
@@ -5,24 +7,32 @@ export enum actionsTypes {
   INCLEASE_QUANTITY_ITEM = 'INCLEASE_QUANTITY_ITEM',
   DECREASE_QUANTITY_ITEM = 'DECREASE_QUANTITY_ITEM',
   REMOVE_QUANTITY_ITEM = 'REMOVE_QUANTITY_ITEM',
+  CHECKOUT = 'CHECKOUT',
 }
 
 export type Actions =
   | {
-      type: actionsTypes.ADD_ITEM
-      payload: {
-        item: ICartItem
-      }
+    type: actionsTypes.ADD_ITEM
+    payload: {
+      item: ICartItem
     }
+  }
   | {
-      type:
-        | actionsTypes.INCLEASE_QUANTITY_ITEM
-        | actionsTypes.DECREASE_QUANTITY_ITEM
-        | actionsTypes.REMOVE_QUANTITY_ITEM
-      payload: {
-        id: string
-      }
+    type:
+    | actionsTypes.INCLEASE_QUANTITY_ITEM
+    | actionsTypes.DECREASE_QUANTITY_ITEM
+    | actionsTypes.REMOVE_QUANTITY_ITEM
+    payload: {
+      id: string
     }
+  }
+  | {
+    type: actionsTypes.CHECKOUT
+    payload: {
+      data: IOrderInfo
+      navigate: NavigateFunction
+    }
+  }
 
 export function addItemAction(item: ICartItem) {
   return {
@@ -56,6 +66,16 @@ export function removeItemToCartAction(id: string) {
     type: actionsTypes.REMOVE_QUANTITY_ITEM,
     payload: {
       id,
+    },
+  } satisfies Actions
+}
+
+export function checkoutAction(data: IOrderInfo, navigate: NavigateFunction) {
+  return {
+    type: actionsTypes.CHECKOUT,
+    payload: {
+      data,
+      navigate,
     },
   } satisfies Actions
 }

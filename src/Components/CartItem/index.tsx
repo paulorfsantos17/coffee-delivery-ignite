@@ -27,7 +27,11 @@ export default function CartItem({ cartItem }: ICartItemProps) {
     incleaseItemToCart(id)
   }
   const decreaseQuantity = () => {
-    decreaseItemToCart(id)
+    if (quantity > 1) {
+      decreaseItemToCart(id)
+    } else {
+      handleRemoveItem()
+    }
   }
   const handleRemoveItem = () => {
     removeItemToCart(id)

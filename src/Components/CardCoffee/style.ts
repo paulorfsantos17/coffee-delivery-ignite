@@ -95,4 +95,9 @@ export const ButtonAdd = styled.button`
   &:hover {
     background-color: ${(props) => props.theme.purple};
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `

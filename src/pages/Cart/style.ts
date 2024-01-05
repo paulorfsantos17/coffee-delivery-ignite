@@ -22,7 +22,6 @@ export const ContainerLocale = styled.div`
 
 export const FormContainer = styled.form`
   display: flex;
-  flex-direction: column;
   gap: 0.75rem;
 `
 export const SectionForm = styled.div`
@@ -168,4 +167,11 @@ export const CheckoutButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme['yellow-dark']};
   }
+`
+
+export const ErrorMessage = styled.p`
+  margin-top: 0.25rem;
+  font-size: 0.6rem;
+  color: red;
+  font-weight: 400;
 `
