@@ -11,10 +11,24 @@ import {
 import SuccessImage from '../../assets/sucessImage.png'
 import { MapPin } from 'phosphor-react'
 import { useParams } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 export function Success() {
-  
+  const { orders } = useCart()
   const { orderId } = useParams()
+
+  const order = orders.find((order) => {
+    return order?.id === Number(orderId)
+  })
+  const paymentMethod = {
+    credit: 'Cartão de crédito',
+    debit: 'Cartão de débito',
+    cash: 'Dinheiro',
+  }
+  if (!order?.id) {
+    return null
+  }
+
   return (
     <SuccessContainer>
       <Header>
@@ -30,8 +44,9 @@ export function Success() {
               </IconInfo>
               <DescriptionInfo>
                 <p>
-                  Entrega em <span> Rua João Daniel Martinelli, 102</span>{' '}
-                  Farrapos - Porto Alegre, RS
+                  Entrega em <span>{order?.street}</span>
+                  <br />
+                  {`${order?.city} - ${order?.state}`}
                 </p>
               </DescriptionInfo>
             </InfoDetail>
@@ -50,7 +65,7 @@ export function Success() {
               </IconInfo>
               <DescriptionInfo>
                 <p>Pagamento na entrega</p>
-                <span>Cartão de Crédito</span>
+                <span>{paymentMethod[order?.paymentMethod]}</span>
               </DescriptionInfo>
             </InfoDetail>
           </InfoContent>

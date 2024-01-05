@@ -12,27 +12,27 @@ export enum actionsTypes {
 
 export type Actions =
   | {
-    type: actionsTypes.ADD_ITEM
-    payload: {
-      item: ICartItem
+      type: actionsTypes.ADD_ITEM
+      payload: {
+        item: ICartItem
+      }
     }
-  }
   | {
-    type:
-    | actionsTypes.INCLEASE_QUANTITY_ITEM
-    | actionsTypes.DECREASE_QUANTITY_ITEM
-    | actionsTypes.REMOVE_QUANTITY_ITEM
-    payload: {
-      id: string
+      type:
+        | actionsTypes.INCLEASE_QUANTITY_ITEM
+        | actionsTypes.DECREASE_QUANTITY_ITEM
+        | actionsTypes.REMOVE_QUANTITY_ITEM
+      payload: {
+        id: string
+      }
     }
-  }
   | {
-    type: actionsTypes.CHECKOUT
-    payload: {
-      data: IOrderInfo
-      navigate: NavigateFunction
+      type: actionsTypes.CHECKOUT
+      payload: {
+        data: IOrderInfo
+        navigate: NavigateFunction
+      }
     }
-  }
 
 export function addItemAction(item: ICartItem) {
   return {

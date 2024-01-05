@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useReducer } from 'react'
+import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { ICartItem, IOrder, cartReducer } from '../reducers/cart/reducer'
 import {
   addItemAction,
@@ -37,12 +37,26 @@ interface ICartContextProps {
 export const CartContext = createContext({} as ICartContextProps)
 
 export default function CartProvider({ children }: ICartProviderProps) {
-  const [cartStage, dispatch] = useReducer(cartReducer, {
-    cart: [],
-    orders: [],
-  })
+  const [cartState, dispatch] = useReducer(
+    cartReducer,
+    {
+      cart: [],
+      orders: [],
+    },
+    (cartState) => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:cart-state-1.0.0',
+      )
 
-  const { cart, orders } = cartStage
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+
+      return cartState
+    },
+  )
+
+  const { cart, orders } = cartState
 
   function addItem(item: ICartItem) {
     dispatch(addItemAction(item))
@@ -63,6 +77,14 @@ export default function CartProvider({ children }: ICartProviderProps) {
   function checkout(data: IOrderInfo, navigate: NavigateFunction) {
     dispatch(checkoutAction(data, navigate))
   }
+
+  useEffect(() => {
+    if (cartState) {
+      const stateJSON = JSON.stringify(cartState)
+
+      localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
+    }
+  }, [cartState])
 
   return (
     <CartContext.Provider
