@@ -8,11 +8,11 @@ import {
 import Logo from '../../assets/logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { CartContext } from '../../contexts/CartProvider'
+
+import { useCart } from '../../hooks/useCart'
 
 export default function Header() {
-  const { cart } = useContext(CartContext)
+  const { cart } = useCart()
   return (
     <HeaderContainer>
       <Link to="/">

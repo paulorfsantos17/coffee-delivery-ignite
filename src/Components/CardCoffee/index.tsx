@@ -9,8 +9,8 @@ import {
   ButtonAdd,
 } from './style'
 import { QuatityButton } from '../QuantityButton'
-import { MouseEvent, useContext, useState } from 'react'
-import { CartContext } from '../../contexts/CartProvider'
+import { MouseEvent, useState } from 'react'
+import { useCart } from '../../hooks/useCart'
 
 export interface ICoffee {
   id: string
@@ -26,7 +26,7 @@ interface ICardCoffeeProps {
 }
 
 export function CardCoffee({ coffee }: ICardCoffeeProps) {
-  const { addItem } = useContext(CartContext)
+  const { addItem } = useCart()
   const [quantity, setQuantity] = useState<number>(0)
 
   const incleaseQuantity = () => {

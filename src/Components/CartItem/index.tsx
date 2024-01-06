@@ -6,9 +6,7 @@ import {
   RemoveButton,
 } from './style'
 import { Trash } from 'phosphor-react'
-import { useContext } from 'react'
-import { CartContext } from '../../contexts/CartProvider'
-import { ICoffee } from '../CardCoffee'
+import { useCart } from '../../hooks/useCart'
 
 interface ICoffeeCartItem extends ICoffee {
   quantity: number
@@ -19,8 +17,7 @@ interface ICartItemProps {
 }
 
 export default function CartItem({ cartItem }: ICartItemProps) {
-  const { incleaseItemToCart, decreaseItemToCart, removeItemToCart } =
-    useContext(CartContext)
+  const { incleaseItemToCart, decreaseItemToCart, removeItemToCart } = useCart()
   const { id, image, price, quantity, title } = cartItem
 
   const increaseQuantity = () => {

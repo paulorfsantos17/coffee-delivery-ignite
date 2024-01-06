@@ -27,8 +27,6 @@ import {
 import { InputText } from '../../Components/InputText'
 import { RadioInput } from '../../Components/RadioInput'
 import CartItem from '../../Components/CartItem'
-import { CartContext } from '../../contexts/CartProvider'
-import { useContext } from 'react'
 import { coffees } from '../../../data.json'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -58,7 +56,7 @@ const newOrder = z.object({
   }),
 })
 export function Cart() {
-  const { cart, checkout } = useContext(CartContext)
+  const { cart, checkout } = useCart()
   const navigate = useNavigate()
 
   const coffeesInCart = cart.map((cartItem) => {
