@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import background from '../../../../assets/Background.svg'
+import { devices } from '../../../../styles/devices'
 
 const colorBannerItem = {
   yellowDark: 'yellow-dark',
@@ -40,6 +41,12 @@ export const BannerContainer = styled.div`
     color: ${(props) => props.theme['base-subtitle']};
     margin-bottom: 4.125rem;
   }
+
+  @media ${devices.mobileL} {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
 `
 export const DescriptionBanner = styled.div`
   display: flex;
@@ -49,6 +56,10 @@ export const DescriptionBanner = styled.div`
 export const ImageBanner = styled.img`
   width: 40%;
   height: 100%;
+  @media ${devices.mobileL} {
+    padding: 2rem;
+    width: 100%;
+  }
 `
 
 export const BannerItemContainer = styled.div`

@@ -32,6 +32,7 @@ import { coffees } from '../../../data.json'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useCart } from '../../hooks/useCart'
 
 interface FormInputs {
   cep: number
@@ -71,6 +72,7 @@ export function Cart() {
       quantity: cartItem.quantity,
     }
   })
+
   const totalItensPrice = coffeesInCart.reduce(
     (accumulator, currentValue) =>
       accumulator + currentValue.quantity * currentValue.price,

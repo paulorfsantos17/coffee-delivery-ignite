@@ -1,10 +1,16 @@
 import styled from 'styled-components'
+import { devices } from '../../styles/devices'
 
 export const ContainerCart = styled.div`
   padding: 1rem 5rem;
   display: flex;
 
   gap: 2rem;
+
+  @media ${devices.mobileL} {
+    flex-direction: column;
+    padding: 2rem;
+  }
 `
 
 export const TitleCard = styled.h2`
@@ -23,6 +29,9 @@ export const ContainerLocale = styled.div`
 export const FormContainer = styled.form`
   display: flex;
   gap: 0.75rem;
+  @media ${devices.mobileL} {
+    flex-direction: column;
+  }
 `
 export const SectionForm = styled.div`
   display: flex;
@@ -44,6 +53,10 @@ export const ContentForm = styled.div`
     'road road road'
     'number complement complement'
     'district city state';
+
+  @media ${devices.mobileL} {
+    grid-template-columns: 35% 50% 15%;
+  }
 `
 
 interface IHeaderProps {
@@ -73,9 +86,9 @@ export const HeaderForm = styled.header<IHeaderProps>`
     height: 22px;
     width: 22px;
     color: ${(props) =>
-      props.type === 'payment'
-        ? props.theme.purple
-        : props.theme['yellow-dark']};
+    props.type === 'payment'
+      ? props.theme.purple
+      : props.theme['yellow-dark']};
   }
 `
 
@@ -83,10 +96,20 @@ export const PaymentContent = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 0.75rem;
+
+  @media ${devices.mobileL} {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 `
 
 export const CartAside = styled.aside`
   width: 80%;
+
+  @media ${devices.mobileL} {
+    width: 100%;
+  }
 `
 
 export const ContentCard = styled.div`
@@ -124,10 +147,10 @@ export const DescriptionPrice = styled.div<IDescriptionPriceProps>`
 
   span:first-child {
     font-size: ${({ isTotalPrice, theme }) =>
-      isTotalPrice ? theme['roboto-medium'] : theme['roboto-xs']};
+    isTotalPrice ? theme['roboto-medium'] : theme['roboto-xs']};
 
     color: ${({ isTotalPrice, theme }) =>
-      isTotalPrice ? theme['base-subtitle'] : theme['base-text']};
+    isTotalPrice ? theme['base-subtitle'] : theme['base-text']};
     font-weight: ${({ isTotalPrice }) => (isTotalPrice ? '700' : '400')};
 
     line-height: 130%;
@@ -135,10 +158,10 @@ export const DescriptionPrice = styled.div<IDescriptionPriceProps>`
 
   span:last-child {
     font-size: ${({ isTotalPrice, theme }) =>
-      isTotalPrice ? theme['roboto-medium'] : theme['roboto-small']};
+    isTotalPrice ? theme['roboto-medium'] : theme['roboto-small']};
 
     color: ${({ isTotalPrice, theme }) =>
-      isTotalPrice ? theme['base-subtitle'] : theme['base-text']};
+    isTotalPrice ? theme['base-subtitle'] : theme['base-text']};
     font-weight: ${({ isTotalPrice }) => (isTotalPrice ? '700' : '400')};
 
     line-height: 130%;

@@ -7,6 +7,7 @@ import {
 } from './style'
 import { Trash } from 'phosphor-react'
 import { useCart } from '../../hooks/useCart'
+import { ICoffee } from '../CardCoffee'
 
 interface ICoffeeCartItem extends ICoffee {
   quantity: number

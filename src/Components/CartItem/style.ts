@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { devices } from '../../styles/devices'
 
 export const CartItemContainer = styled.div`
   display: flex;
@@ -69,4 +70,9 @@ export const Price = styled.span`
   font-style: normal;
   font-weight: 700;
   line-height: 130%;
+
+  @media ${devices.mobileL} {
+    position: relative;
+    right: 1rem;
+  }
 `

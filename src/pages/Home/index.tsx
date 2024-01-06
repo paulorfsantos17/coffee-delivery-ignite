@@ -1,10 +1,10 @@
 import Banner from './components/Banner'
-import { ContainerCoffee, TitleHome } from './style'
+import { Container, ContainerCoffee, TitleHome } from './style'
 import { coffees } from '../../../data.json'
 import { CardCoffee } from '../../Components/CardCoffee'
 export function Home() {
   return (
-    <div>
+    <Container>
       <Banner />
       <TitleHome>Nossos cafés</TitleHome>
       <ContainerCoffee>
@@ -12,6 +12,6 @@ export function Home() {
           <CardCoffee coffee={coffee} key={coffee.id} />
         ))}
       </ContainerCoffee>
-    </div>
+    </Container>
   )
 }

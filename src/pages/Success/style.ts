@@ -1,7 +1,11 @@
 import styled from 'styled-components'
+import { devices } from '../../styles/devices'
 
 export const SuccessContainer = styled.div`
   margin: 3rem 5rem;
+  @media ${devices.mobileL} {
+    margin: 2rem;
+  }
 `
 
 export const Header = styled.div`
@@ -35,6 +39,13 @@ export const Content = styled.div`
   img {
     width: 50%;
   }
+
+  @media ${devices.mobileL} {
+    flex-direction: column;
+    img {
+      width: 100%;
+    }
+  }
 `
 export const Info = styled.div`
   display: flex;
@@ -49,6 +60,10 @@ export const InfoContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  @media ${devices.mobileL} {
+    gap: 2rem;
+  }
 
   width: 100%;
   background-color: ${({ theme }) => theme.background};
